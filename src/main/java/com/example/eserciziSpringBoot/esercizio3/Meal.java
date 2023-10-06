@@ -1,4 +1,4 @@
-package com.example.eserciziSpringBoot.model;
+package com.example.eserciziSpringBoot.esercizio3;
 
 public class Meal {
     private String name;

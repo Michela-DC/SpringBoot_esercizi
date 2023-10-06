@@ -1,6 +1,6 @@
 package com.example.eserciziSpringBoot.esercizio3;
 import com.example.eserciziSpringBoot.esercizio2.MealController;
-import com.example.eserciziSpringBoot.model.Meal;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,7 +11,19 @@ import java.util.Optional;
 @RequestMapping("/esercizio-3")
 public class SecondMealController {
 
-    private List<Meal> mealsList = new MealController().getMeals();
+    private List<Meal> mealsList = new SecondMealController().getMeals();
+
+    public List<Meal> getMeals() {
+        Meal meal1 = new Meal("carbonara", "tipico piatto romano", 12.35);
+        Meal meal2 = new Meal("amatriciana", "tipico piatto di Amatrice", 11.80);
+        Meal meal3 = new Meal("troffie al pesto", "tipico piatto ligure", 10.75);
+
+        mealsList.add(meal1);
+        mealsList.add(meal2);
+        mealsList.add(meal3);
+
+        return mealsList;
+    }
 
     @PostMapping ("/meal")
     public ResponseEntity<String> addMeal(@RequestBody Meal meal) {

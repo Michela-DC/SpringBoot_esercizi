@@ -1,6 +1,5 @@
 package com.example.eserciziSpringBoot.esercizio2;
 
-import com.example.eserciziSpringBoot.model.Meal;
 import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
