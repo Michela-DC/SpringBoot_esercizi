@@ -9,6 +9,7 @@ import java.util.List;
 public class MealDao {
     private List<Meal> meals = new ArrayList<>();
 
+    //TODO da rivedere se invece dovevo fare save
     public void addMeal(Meal meal) {
         this.meals.add(meal);
     }
