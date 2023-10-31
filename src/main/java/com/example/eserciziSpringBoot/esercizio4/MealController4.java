@@ -21,8 +21,8 @@ public class MealController4 {
         return ResponseEntity.ok(mealService.getMeals());
     }
 
-    @PutMapping(value = "/put/meal")
-    public ResponseEntity<String> putMeal (@RequestBody Meal meal) {
+    @PostMapping(value = "/post/meal")
+    public ResponseEntity<String> addMeal (@RequestBody Meal meal) {
         try {
             mealService.addMeal(meal);
             return ResponseEntity.ok("Meal added!");
