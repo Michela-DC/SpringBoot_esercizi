@@ -29,13 +29,12 @@ public class IngredientService {
         return ingredientDao.save(ingredient);
     }
 
-    public Ingredient updateIngredient(Long ingredientId, Ingredient updateIngredient) {
+    public Optional<Ingredient> updateIngredient(Long ingredientId, Ingredient updateIngredient) {
         if (ingredientDao.existsById(ingredientId)) {
             updateIngredient.setId(ingredientId);
-            return ingredientDao.save(updateIngredient);
-        } else {
-            throw new IllegalArgumentException("Ingredient not found!");
         }
+
+        return Optional.of(updateIngredient);
     }
 
     public void deleteIngredientById(Long id) {

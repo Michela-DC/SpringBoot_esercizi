@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(value = "/api/ingredients")
@@ -37,6 +38,17 @@ public class IngredientController {
         Ingredient ingredient = ingredientService.insertIngredient(ingredientToInsert);
 
         return ResponseEntity.ok(ingredient);
+    }
+
+    @PutMapping("/update/{id}")
+    public ResponseEntity<Ingredient> updateIngredient(@PathVariable Long id, @RequestBody Ingredient ingredientToUpdate) {
+        Optional<Ingredient> ingredientOpt = ingredientService.updateIngredient(id, ingredientToUpdate);
+
+        if(ingredientOpt.isPresent()) {
+            return ResponseEntity.ok(ingredientOpt.get());
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @DeleteMapping("/delete/{id}")
