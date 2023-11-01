@@ -30,11 +30,21 @@ public class IngredientService {
     }
 
     public Optional<Ingredient> updateIngredient(Long ingredientId, Ingredient updateIngredient) {
-        if (ingredientDao.existsById(ingredientId)) {
-            updateIngredient.setId(ingredientId);
-        }
+        Optional<Ingredient> ingredientOpt = ingredientDao.findById(ingredientId);
 
-        return Optional.of(updateIngredient);
+        if(!ingredientOpt.isEmpty()) {
+            Ingredient ingredient = ingredientOpt.get();
+
+            ingredient.setName(updateIngredient.getName());
+            ingredient.setVegetarian(updateIngredient.isVegetarian());
+            ingredient.setVegan(updateIngredient.isVegan());
+            ingredient.setGlutenFree(updateIngredient.isGlutenFree());
+            ingredient.setLactoseFree(updateIngredient.isLactoseFree());
+
+            return Optional.of(ingredient);
+        } else {
+            return Optional.empty();
+        }
     }
 
     public void deleteIngredientById(Long id) {
