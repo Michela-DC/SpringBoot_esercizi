@@ -40,6 +40,7 @@ public class IngredientService {
             ingredient.setVegan(updateIngredient.isVegan());
             ingredient.setGlutenFree(updateIngredient.isGlutenFree());
             ingredient.setLactoseFree(updateIngredient.isLactoseFree());
+            ingredientDao.save(ingredient);
 
             return Optional.of(ingredient);
         } else {
