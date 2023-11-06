@@ -48,7 +48,6 @@ public class MealController6 {
 
     @GetMapping("/winter-meals")
     public ResponseEntity<List<MealEntity>> isWinterMeal() {
-        mealService.getWinterMeals();
         return ResponseEntity.ok(mealService.getWinterMeals());
     }
 }
